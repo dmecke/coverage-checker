@@ -33,4 +33,11 @@ Run the code coverage check with:
 vendor/bin/coverage-checker check coverage.xml
 ```
 
-The script will use a return code > 0 if any code coverage is below the defined minimum. This way it can be used in CI.
+The script will use a return code > 0 if any code coverage does not meet the specified criteria. This way it can be used in CI.
+
+
+
+## FAQ
+
+###### Why does the check fail when the coverage is better than defined?
+If you managed to improve your test coverage you should increase your defined limits. Otherwise you could fall back to a lower coverage again.

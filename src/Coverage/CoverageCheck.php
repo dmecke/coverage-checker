@@ -48,11 +48,9 @@ final class CoverageCheck
 
     public function report(): string
     {
-        $status = $this->passes() ? 'OK' : 'FAILED';
-
         return sprintf(
             '%s %s / %s - %s',
-            str_pad($status, 6),
+            str_pad($this->getStatus()->toString(), 6),
             str_pad((string) $this->toPercentage() . '%', 4, ' ', STR_PAD_LEFT),
             str_pad((string) $this->threshold . '%', 4, ' ', STR_PAD_LEFT),
             $this->namespacePart->toString()
@@ -61,7 +59,20 @@ final class CoverageCheck
 
     public function passes(): bool
     {
-        return $this->toPercentage() >= $this->threshold;
+        return $this->getStatus()->equals(CoverageStatus::ok());
+    }
+
+    public function getStatus(): CoverageStatus
+    {
+        if ($this->toPercentage() > $this->threshold) {
+            return CoverageStatus::improved();
+        }
+
+        if ($this->toPercentage() < $this->threshold) {
+            return CoverageStatus::failed();
+        }
+
+        return CoverageStatus::ok();
     }
 
     private function toPercentage(): int
