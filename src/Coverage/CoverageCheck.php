@@ -50,7 +50,7 @@ final class CoverageCheck
     {
         return sprintf(
             '%s %s / %s - %s',
-            str_pad($this->getStatus()->toString(), 6),
+            str_pad($this->getStatus()->toString(), 8),
             str_pad((string) $this->toPercentage() . '%', 4, ' ', STR_PAD_LEFT),
             str_pad((string) $this->threshold . '%', 4, ' ', STR_PAD_LEFT),
             $this->namespacePart->toString()
