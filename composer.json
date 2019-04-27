@@ -1,0 +1,30 @@
+{
+    "name": "dmecke/coverage-checker",
+    "description": "Check code coverage per namespace.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Mecke",
+            "email": "daniel.mecke@cunningsoft.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CoverageChecker\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3",
+        "ext-simplexml": "*",
+        "symfony/console": "^4.2",
+        "symfony/yaml": "^4.2"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "bin": [
+        "bin/coverage-checker"
+    ]
+}

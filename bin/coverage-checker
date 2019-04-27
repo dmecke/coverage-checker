@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\Console\Application;
+use CoverageChecker\Coverage\CoverageCheckerCommand;
+
+$autoloaderInWorkingDirectory = getcwd() . '/vendor/autoload.php';
+
+if (is_file($autoloaderInWorkingDirectory)) {
+    require_once $autoloaderInWorkingDirectory;
+}
+unset($autoloaderInWorkingDirectory);
+
+$files = [
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php',
+];
+
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        break;
+    }
+    unset($file);
+}
+unset($files);
+
+$application = new Application('Coverage Checker');
+$application->add(new CoverageCheckerCommand());
+$application->run();
