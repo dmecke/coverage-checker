@@ -18,8 +18,8 @@
     "require": {
         "php": "^7.3",
         "ext-simplexml": "*",
-        "symfony/console": "^4.2",
-        "symfony/yaml": "^4.2"
+        "symfony/console": "^4.2|^5.0",
+        "symfony/yaml": "^4.2|^5.0"
     },
     "config": {
         "sort-packages": true
