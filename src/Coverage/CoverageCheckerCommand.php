@@ -67,7 +67,10 @@ final class CoverageCheckerCommand extends Command
         $metric = $classElement->metrics;
         $elements = (int) $metric['elements'];
         $coveredElements = (int) $metric['coveredelements'];
-        $namespace = (string) $classElement['namespace'];
+        $name = (string) $classElement['name'];
+        $namespaceElements = explode('\\', $name);
+        array_pop($namespaceElements);
+        $namespace = implode('\\', $namespaceElements);
 
         $found = [];
         foreach ($coverageChecks as $ns) {
