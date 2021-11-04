@@ -11,7 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "CoverageChecker\\": "src/"
+            "CoverageChecker\\": "src/",
+            "Tests\\CoverageChecker\\": "tests/"
         }
     },
     "minimum-stability": "stable",
@@ -26,5 +27,8 @@
     },
     "bin": [
         "bin/coverage-checker"
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }

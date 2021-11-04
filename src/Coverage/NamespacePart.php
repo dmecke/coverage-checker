@@ -18,11 +18,10 @@ final class NamespacePart
 
     public function isPartOf(string $namespace): bool
     {
-        if ($this->part === '') {
+        if ($this->part === '' || $namespace === $this->part) {
             return true;
         }
-
-        return strpos($namespace, $this->part) === 0;
+        return strpos($namespace, $this->part.'\\') === 0;
     }
 
     public function toString(): string
